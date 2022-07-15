@@ -1,20 +1,20 @@
 import "./city.css";
 
-type Location = {
-  cityName: string;
-  country: string;
-  lon: string;
-  lat: string;
+export type Location = {
+	cityName: string;
+	country: string;
+	lon: number;
+	lat: number;
 };
 
-export default function City(location: Location) {
-  return (
-    <div className="city-box">
-      <h2>{location.cityName}</h2>
-      <p>{location.country}</p>
-      <div className="long-lat">
-        <p>{location.lon}</p> <p>{location.lat}</p>
-      </div>
-    </div>
-  );
+export default function City(props: any) {
+	return (
+		<div className="city-box">
+			<h2>{props.location.cityName}</h2>
+			<p>{props.location.country}</p>
+			<div className="long-lat">
+				<p>{props.location.lon}</p> <p>{props.location.lat}</p>
+			</div>
+		</div>
+	);
 }
