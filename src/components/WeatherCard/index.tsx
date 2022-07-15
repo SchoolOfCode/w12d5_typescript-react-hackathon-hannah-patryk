@@ -7,37 +7,47 @@ import "./weathercard.css";
 import type { Location } from "./City";
 
 type Data = {
-	[key: string]: any;
+  [key: string]: any;
 };
 
-export default function WeatherCard(location: string) {
-	const [data, setData] = useState<Data>(getWeather(location));
+type WeatherProps = { location: string };
 
-	const locationData: Location = {
-		cityName: data.name,
-		country: data.sys.country,
-		lon: data.coord.lon,
-		lat: data.coord.lat,
-	};
+export default function WeatherCard({ location }: WeatherProps) {
+  const [data, setData] = useState<Data>(getWeather(location));
 
-	useEffect(() => {
-		getWeather(location);
-	}, [location]);
+  const locationData: Location = {
+    cityName: data.name,
+    country: data.sys.country,
+    lon: data.coord.lon,
+    lat: data.coord.lat,
+  };
 
-	async function getWeather(location: string) {
-		const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${process.env.APIKEY}`;
-		const res = await fetch(url);
-		const payload: Data = await res.json();
-		console.log(payload);
-		setData(payload);
-		return payload;
-	}
+  useEffect(() => {
+    getWeather(location);
+  }, [location]);
 
-	return (
-		<div className="WeatherCard">
-			<City location={locationData} />
-			<Temp />
-			<Description />
-		</div>
-	);
+  async function getWeather(location: string) {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${process.env.APIKEY}`;
+    const res = await fetch(url);
+    const payload: Data = await res.json();
+    console.log(payload);
+    setData(payload);
+    return payload;
+  }
+
+  return (
+    <div className="WeatherCard">
+      <City location={locationData} />
+      <Temp
+        min={data.main.temp_min}
+        max={data.main.temp_max}
+        fl={data.main.feels_like}
+      />
+      <Description
+        cat={data.weather[0].main}
+        subcat={data.weather[0].description}
+        icon={data.weather[0].icon}
+      />
+    </div>
+  );
 }
