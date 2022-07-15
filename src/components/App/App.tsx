@@ -20,9 +20,10 @@ function App() {
       </header>
       <main>
         <div className="button-box">
-          {locationArr.map(function (element) {
+          {locationArr.map(function (element, index) {
             return (
               <LocationButton
+                key={index}
                 handleClick={handleClick}
                 locationName={element}
               />
