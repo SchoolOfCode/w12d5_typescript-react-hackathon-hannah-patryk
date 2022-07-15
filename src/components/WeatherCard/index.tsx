@@ -5,6 +5,7 @@ import Description from "./Description";
 import Temp from "./Temp";
 import "./weathercard.css";
 import type { Location } from "./City";
+import MapContainer from "../MapContainer";
 
 type Data = {
   [key: string]: any;
@@ -18,7 +19,10 @@ let locationData: Location = {
   lon: 0,
   lat: 0,
 };
-
+let defaultCenter = {
+  lat: 0,
+  lng: 0,
+};
 export default function WeatherCard({ location }: WeatherProps) {
   const [data, setData] = useState<Data | null>(null);
 
@@ -30,7 +34,7 @@ export default function WeatherCard({ location }: WeatherProps) {
   }, [location]);
 
   async function getWeather(location: string) {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${process.env.REACT_APP_APIKEY}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${process.env.REACT_APP_APIKEY}&units=metric`;
     const res = await fetch(url);
     const payload: Data = await res.json();
     console.log(payload);
@@ -46,6 +50,12 @@ export default function WeatherCard({ location }: WeatherProps) {
       lon: data.coord.lon,
       lat: data.coord.lat,
     };
+
+    defaultCenter = {
+      lat: data.coord.lat,
+      lng: data.coord.lon,
+    };
+
     return locationData;
   }
 
@@ -63,6 +73,7 @@ export default function WeatherCard({ location }: WeatherProps) {
           subcat={data.weather[0].description}
           icon={data.weather[0].icon}
         />
+        <MapContainer centerObj={defaultCenter} />
       </div>
     );
   } else {

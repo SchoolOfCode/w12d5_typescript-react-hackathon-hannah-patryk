@@ -1,0 +1,14 @@
+.long-lat {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.lonlat-label {
+  font-weight: bold;
+}
+
+.city-name {
+  font-weight: bold;
+  font-size: larger;
+}
