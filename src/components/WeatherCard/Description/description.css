@@ -1,17 +1,29 @@
 #weather-desc {
-	margin: auto;
-	width: 60%;
-	display: grid;
-	grid-template-columns: 3fr 2fr;
+  margin: auto;
+  width: 60%;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
 }
 
 #weather-icon {
-	width: min(100px, 100%);
-	height: min(100px, 100%);
+  width: min(100px, 100%);
+  height: min(100px, 100%);
 }
 
 #img-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#weather-cat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-cat-wth {
+  font-weight: bold;
+  font-size: large;
 }

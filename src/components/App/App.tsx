@@ -6,7 +6,7 @@ import LocationButton from "../LocationButton";
 
 function App() {
   const [location, setLocation] = useState("London,uk");
-  const locationArr = ["London", "Paris", "New%20York", "Warsaw", "Sydney"];
+  const locationArr = ["London", "Paris", "New York", "Warsaw", "Sydney"];
 
   function handleClick(e: React.MouseEvent<HTMLButtonElement>): void {
     setLocation(e.currentTarget.name);
