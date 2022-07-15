@@ -1,5 +1,15 @@
+:root {
+	--head-height: 150px;
+}
+
+div {
+	outline: 1px solid rgba(255, 0, 0, 0.25);
+}
+
 .App {
+	margin: auto;
 	text-align: center;
+	width: min(100%, 650px);
 }
 
 .App-logo {
@@ -15,7 +25,7 @@
 
 .App-header {
 	background-color: navy;
-	min-height: 150px;
+	min-height: var(--head-height);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -35,4 +45,15 @@
 	to {
 		transform: rotate(360deg);
 	}
+}
+
+main {
+	height: calc(100vh - var(--head-height));
+	background-color: antiquewhite;
+}
+
+.button-box {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
 }

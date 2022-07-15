@@ -18,13 +18,13 @@ export default function Description(props: DescProps) {
 						props.subcat.slice(-props.subcat.length + 1)}
 				</p>
 			</div>
-			<figure>
+			<div id="img-container">
 				<img
 					src={imgUrl}
 					id="weather-icon"
 					alt={`Stylised icon of ${props.cat.toLowerCase()} weather type`}
 				/>
-			</figure>
+			</div>
 		</section>
 	);
 }

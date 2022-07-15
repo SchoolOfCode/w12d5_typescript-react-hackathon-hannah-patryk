@@ -1,6 +1,6 @@
 #weather-desc {
 	margin: auto;
-	width: 80%;
+	width: 60%;
 	display: grid;
 	grid-template-columns: 3fr 2fr;
 }
@@ -8,4 +8,10 @@
 #weather-icon {
 	width: min(100px, 100%);
 	height: min(100px, 100%);
+}
+
+#img-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
